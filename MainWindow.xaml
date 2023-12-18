@@ -1,0 +1,34 @@
+﻿<Window x:Class="Symbol.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="STOP Sign" Height="450" Width="300">
+    <Grid VerticalAlignment="Top">
+        <!-- Оригинальное изображение -->
+        <Viewbox>
+            <Canvas Width="100" Height="100">
+                <!-- Красный круг -->
+                <Ellipse Width="100" Height="100" Fill="Red"/>
+                <!-- Белый шестиугольник (стоп-линия) -->
+                <Polygon Points="30,70 70,70 80,50 70,30 30,30 20,50" Fill="White"/>
+            </Canvas>
+        </Viewbox>
+
+        <!-- Отражение в нижней части с размытием -->
+        <Viewbox>
+            <Canvas Width="100" Height="100">
+                <Canvas.Effect>
+                    <!-- Применение размытия -->
+                    <BlurEffect Radius="5" KernelType="Gaussian"/>
+                </Canvas.Effect>
+                <Canvas.RenderTransform>
+                    <!-- Зеркальное отражение по вертикали -->
+                    <ScaleTransform ScaleY="-1"/>
+                </Canvas.RenderTransform>
+                <!-- Красный круг -->
+                <Ellipse Width="100" Height="100" Fill="Red" Canvas.Top="-201"/>
+                <!-- Белый шестиугольник (частичное) -->
+                <Polygon Points="30,70 70,70 80,50 70,30 30,30 20,50" Fill="White" Canvas.Top="-201"/>
+            </Canvas>
+        </Viewbox>
+    </Grid>
+</Window>
